@@ -1,5 +1,9 @@
+#ifndef CHIP8_H
+#define CHIP8_H
+
 #include <stdint.h>
 
+// Defining the system structure
 typedef struct {
   uint8_t   memory[4096];           // 4k of RAM
   uint8_t   V[16];                  // 16 8-bit registers (V0 - VF)
@@ -16,5 +20,12 @@ typedef struct {
   uint8_t   keypad[16];             // Hex keypad (0x0 - 0xF)
 
 } chip8;
+
+// Function Prototypes (Promises to the compiler)
+void chip8_init(chip8 *cpu);
+int chip8_load_rom(chip8 *cpu, const char *filename);
+void chip8_cycle(chip8 *cpu);
+
+#endif
 
 
